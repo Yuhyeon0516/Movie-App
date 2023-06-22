@@ -589,16 +589,19 @@ parcelHelpers.defineInteropFlag(exports);
 var _yuhyeon = require("./core/yuhyeon");
 var _theHeader = require("./components/TheHeader");
 var _theHeaderDefault = parcelHelpers.interopDefault(_theHeader);
+var _theFooter = require("./components/TheFooter");
+var _theFooterDefault = parcelHelpers.interopDefault(_theFooter);
 class App extends (0, _yuhyeon.Component) {
     render() {
         const theHeader = new (0, _theHeaderDefault.default)().el;
         const routerView = document.createElement("router-view");
-        this.el.append(theHeader, routerView);
+        const theFooter = new (0, _theFooterDefault.default)().el;
+        this.el.append(theHeader, routerView, theFooter);
     }
 }
 exports.default = App;
 
-},{"./core/yuhyeon":"1l8pw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./components/TheHeader":"3Cyq4"}],"1l8pw":[function(require,module,exports) {
+},{"./core/yuhyeon":"1l8pw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./components/TheHeader":"3Cyq4","./components/TheFooter":"b3x3c"}],"1l8pw":[function(require,module,exports) {
 ///// Component /////
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -770,7 +773,35 @@ class TheHeader extends (0, _yuhyeon.Component) {
 }
 exports.default = TheHeader;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../core/yuhyeon":"1l8pw"}],"3L9mC":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../core/yuhyeon":"1l8pw"}],"b3x3c":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _yuhyeon = require("../core/yuhyeon");
+class TheFooter extends (0, _yuhyeon.Component) {
+    constructor(){
+        super({
+            tagName: "footer"
+        });
+    }
+    render() {
+        this.el.innerHTML = /* html */ `
+      <div>
+        <a href="https://github.com/Yuhyeon0516/Movie-App">
+          Github Repository
+        </a>
+      </div>
+      <div>
+        <a href="https://github.com/Yuhyeon0516">
+          ${new Date().getFullYear()}
+          Yuhyeon
+        </a>
+      </div>
+    `;
+    }
+}
+exports.default = TheFooter;
+
+},{"../core/yuhyeon":"1l8pw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3L9mC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _yuhyeon = require("../core/yuhyeon");
