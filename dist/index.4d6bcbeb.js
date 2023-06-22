@@ -729,17 +729,20 @@ var _headline = require("../components/Headline");
 var _headlineDefault = parcelHelpers.interopDefault(_headline);
 var _search = require("../components/Search");
 var _searchDefault = parcelHelpers.interopDefault(_search);
+var _movieList = require("../components/MovieList");
+var _movieListDefault = parcelHelpers.interopDefault(_movieList);
 class Home extends (0, _yuhyeon.Component) {
     render() {
         const headline = new (0, _headlineDefault.default)().el;
         const search = new (0, _searchDefault.default)().el;
+        const movieList = new (0, _movieListDefault.default)().el;
         this.el.classList.add("container");
-        this.el.append(headline, search);
+        this.el.append(headline, search, movieList);
     }
 }
 exports.default = Home;
 
-},{"../core/yuhyeon":"1l8pw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../components/Headline":"gaVgo","../components/Search":"jqPPz"}],"gaVgo":[function(require,module,exports) {
+},{"../core/yuhyeon":"1l8pw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../components/Headline":"gaVgo","../components/Search":"jqPPz","../components/MovieList":"8UDl3"}],"gaVgo":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _yuhyeon = require("../core/yuhyeon");
@@ -804,10 +807,75 @@ const store = new (0, _yuhyeon.Store)({
 });
 exports.default = store;
 const searchMovies = async (page)=>{
+    if (page === 1) {
+        store.state.page = 1;
+        store.state.movies = [];
+    }
     const res = await fetch(`https://omdbapi.com/?apikey=d4861326&s=${store.state.searchText}&page=${page}`);
-    const json = await res.json();
-    console.log(json);
+    const { Search  } = await res.json();
+    store.state.movies = [
+        ...store.state.movies,
+        ...Search
+    ];
 };
+
+},{"../core/yuhyeon":"1l8pw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8UDl3":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _yuhyeon = require("../core/yuhyeon");
+var _movie = require("../store/movie");
+var _movieDefault = parcelHelpers.interopDefault(_movie);
+var _movieItem = require("./MovieItem");
+var _movieItemDefault = parcelHelpers.interopDefault(_movieItem);
+class MovieList extends (0, _yuhyeon.Component) {
+    constructor(){
+        super();
+        (0, _movieDefault.default).subscribe("movies", ()=>{
+            this.render();
+        });
+    }
+    render() {
+        this.el.classList.add("movie-list");
+        this.el.innerHTML = /* html */ `
+      <div class="movies"></div>
+    `;
+        const moviesEl = this.el.querySelector(".movies");
+        moviesEl.append(...(0, _movieDefault.default).state.movies.map((movie)=>new (0, _movieItemDefault.default)({
+                movie: movie
+            }).el));
+    }
+}
+exports.default = MovieList;
+
+},{"../core/yuhyeon":"1l8pw","../store/movie":"kq1bo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./MovieItem":"fAzE8"}],"fAzE8":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _yuhyeon = require("../core/yuhyeon");
+class MovieItem extends (0, _yuhyeon.Component) {
+    constructor(props){
+        super({
+            props,
+            tagName: "a"
+        });
+    }
+    render() {
+        const { movie  } = this.props;
+        this.el.setAttribute("href", `#/movie?id=${movie.imdbID}`);
+        this.el.classList.add("movie");
+        this.el.style.backgroundImage = `url(${movie.Poster})`;
+        this.el.innerHTML = /* html */ `
+      <div class="info">
+        <div class="year">
+          ${movie.Year}
+        </div>
+        <div class="title">
+          ${movie.Title}
+        </div>
+      </div>
+    `;
+    }
+}
+exports.default = MovieItem;
 
 },{"../core/yuhyeon":"1l8pw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["f3BSW","gLLPy"], "gLLPy", "parcelRequire6588")
 
