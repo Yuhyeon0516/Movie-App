@@ -124,7 +124,7 @@ header nav ul li a {
   color: var(--color-white-50);
   text-decoration: none;
 }
-header nav ul li a:active {
+header nav ul li a.active {
   color: var(--color-primary);
 }
 header .user {
@@ -145,6 +145,7 @@ header .user:hover {
 }
 header .user img {
   width: 100%;
+  border-radius: 50%;
 }
 
 .headline {

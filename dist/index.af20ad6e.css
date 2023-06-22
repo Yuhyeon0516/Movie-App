@@ -139,7 +139,7 @@ header nav ul li a {
   text-decoration: none;
 }
 
-header nav ul li a:active {
+header nav ul li a.active {
   color: var(--color-primary);
 }
 
@@ -162,6 +162,7 @@ header .user:hover {
 }
 
 header .user img {
+  border-radius: 50%;
   width: 100%;
 }
 
