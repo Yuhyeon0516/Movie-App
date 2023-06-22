@@ -705,16 +705,19 @@ parcelHelpers.defineInteropFlag(exports);
 var _yuhyeon = require("../core/yuhyeon");
 var _headline = require("../components/Headline");
 var _headlineDefault = parcelHelpers.interopDefault(_headline);
+var _search = require("../components/Search");
+var _searchDefault = parcelHelpers.interopDefault(_search);
 class Home extends (0, _yuhyeon.Component) {
     render() {
         const headline = new (0, _headlineDefault.default)().el;
+        const search = new (0, _searchDefault.default)().el;
         this.el.classList.add("container");
-        this.el.append(headline);
+        this.el.append(headline, search);
     }
 }
 exports.default = Home;
 
-},{"../core/yuhyeon":"1l8pw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../components/Headline":"gaVgo"}],"gaVgo":[function(require,module,exports) {
+},{"../core/yuhyeon":"1l8pw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../components/Headline":"gaVgo","../components/Search":"jqPPz"}],"gaVgo":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _yuhyeon = require("../core/yuhyeon");
@@ -736,6 +739,30 @@ class Headline extends (0, _yuhyeon.Component) {
     }
 }
 exports.default = Headline;
+
+},{"../core/yuhyeon":"1l8pw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jqPPz":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _yuhyeon = require("../core/yuhyeon");
+class Search extends (0, _yuhyeon.Component) {
+    render() {
+        this.el.classList.add("search");
+        this.el.innerHTML = /* html */ `
+      <input placeholder="Enter the movie title to search for english!" />
+      <button class="btn btn-primary">
+        Search!
+      </button>
+    `;
+        const inputEl = this.el.querySelector("input");
+        inputEl.addEventListener("input", ()=>{});
+        inputEl.addEventListener("keydown", (event)=>{
+            event.key;
+        });
+        const btnEl = this.el.querySelector(".btn");
+        btnEl.addEventListener("click", ()=>{});
+    }
+}
+exports.default = Search;
 
 },{"../core/yuhyeon":"1l8pw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["f3BSW","gLLPy"], "gLLPy", "parcelRequire6588")
 
