@@ -786,7 +786,7 @@ class TheFooter extends (0, _yuhyeon.Component) {
         });
     }
     render() {
-        const { github , repository  } = (0, _aboutDefault.default).state;
+        const { name , github , repository  } = (0, _aboutDefault.default).state;
         this.el.innerHTML = /* html */ `
       <div>
         <a href="${repository}" target="_blank">
@@ -796,7 +796,7 @@ class TheFooter extends (0, _yuhyeon.Component) {
       <div>
         <a href="${github}" target="_blank">
           ${new Date().getFullYear()}
-          Yuhyeon
+          ${name}
         </a>
       </div>
     `;
@@ -810,7 +810,7 @@ parcelHelpers.defineInteropFlag(exports);
 var _yuhyeon = require("../core/yuhyeon");
 exports.default = new (0, _yuhyeon.Store)({
     photo: "https://avatars.githubusercontent.com/u/120432007?v=4",
-    name: "Yuhyeon",
+    name: "YuHyeon",
     email: "rladbgus0516@naver.com",
     github: "https://github.com/Yuhyeon0516",
     repository: "https://github.com/Yuhyeon0516/Movie-App"
@@ -826,6 +826,8 @@ var _movie = require("./Movie");
 var _movieDefault = parcelHelpers.interopDefault(_movie);
 var _about = require("./About");
 var _aboutDefault = parcelHelpers.interopDefault(_about);
+var _notfound = require("./Notfound");
+var _notfoundDefault = parcelHelpers.interopDefault(_notfound);
 exports.default = (0, _yuhyeon.createRouter)([
     {
         path: "#/",
@@ -838,10 +840,14 @@ exports.default = (0, _yuhyeon.createRouter)([
     {
         path: "#/about",
         component: (0, _aboutDefault.default)
+    },
+    {
+        path: ".*",
+        component: (0, _notfoundDefault.default)
     }
 ]);
 
-},{"../core/yuhyeon":"1l8pw","./Home":"0JSNG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Movie":"1LTyN","./About":"gdB30"}],"0JSNG":[function(require,module,exports) {
+},{"../core/yuhyeon":"1l8pw","./Home":"0JSNG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Movie":"1LTyN","./About":"gdB30","./Notfound":"gPjf9"}],"0JSNG":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _yuhyeon = require("../core/yuhyeon");
@@ -1152,6 +1158,23 @@ class About extends (0, _yuhyeon.Component) {
 }
 exports.default = About;
 
-},{"../core/yuhyeon":"1l8pw","../store/about":"4RAJO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["f3BSW","gLLPy"], "gLLPy", "parcelRequire6588")
+},{"../core/yuhyeon":"1l8pw","../store/about":"4RAJO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gPjf9":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _yuhyeon = require("../core/yuhyeon");
+class NotFound extends (0, _yuhyeon.Component) {
+    render() {
+        this.el.classList.add("container", "not-found");
+        this.el.innerHTML = /* html */ `
+      <h1>
+        Sorry..<br>
+        Page Not Found.
+      </h1>
+    `;
+    }
+}
+exports.default = NotFound;
+
+},{"../core/yuhyeon":"1l8pw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["f3BSW","gLLPy"], "gLLPy", "parcelRequire6588")
 
 //# sourceMappingURL=index.4d6bcbeb.js.map
